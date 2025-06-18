@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block title %}Add Todo{% endblock %} {% block
+content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mb-4">Add New Todo</h1>
+
+    <form method="POST" action="{{ url_for('add') }}">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+          placeholder="Enter todo title"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          rows="3"
+          placeholder="Enter todo description (optional)"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" name="category">
+          <option value="">Select a category (optional)</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Health">Health</option>
+          <option value="Education">Education</option>
+          <option value="Finance">Finance</option>
+          <option value="Home">Home</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="due_date" class="form-label">Due Date</label>
+        <input type="date" class="form-control" id="due_date" name="due_date" />
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
